@@ -1,12 +1,16 @@
-import openai
-import openai_config
+from openai import OpenAI
+import env
 
-openai.api_key = openai_config.API_KEY
+client = OpenAI(api_key=env.OPENAI_API_KEY)
 
-response = openai.Completion.create(
-  engine="text-davinci-002",
-  prompt="Translate the following English text to French: 'Hello, how are you?'",
-  max_tokens=60
+completion = client.chat.completions.create(
+  model="gpt-4",
+  messages=[
+    {"role": "system", "content": "You are a poetic assistant, skilled in explaining complex programming concepts with creative flair."},
+    {"role": "user", "content": "Compose a poem that explains the concept of recursion in programming."}
+  ]
 )
 
-print(response.choices[0].text.strip())
+print(completion.choices[0].message)
+
+# https://platform.openai.com/docs/guides/text-to-speech

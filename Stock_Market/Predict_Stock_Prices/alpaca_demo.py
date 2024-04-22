@@ -2,9 +2,9 @@ from alpaca.data import StockHistoricalDataClient
 from alpaca.data.timeframe import TimeFrame
 from alpaca.data.requests import StockBarsRequest
 import datetime as dt
-import alpaca_config
+import env
 
-client = StockHistoricalDataClient(api_key=alpaca_config.API_KEY, secret_key=alpaca_config.API_SECRET)
+client = StockHistoricalDataClient(api_key=env.API_KEY, secret_key=env.API_SECRET)
 request_params = StockBarsRequest(
     symbol_or_symbols='ARM',
     timeframe=TimeFrame.Hour,
