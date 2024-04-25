@@ -11,7 +11,7 @@ completion = client.chat.completions.create(
     messages=[
         {"role": "system", "content": "Você é um escritor brasileiro de histórias infantis"},
         {"role": "user",
-         "content": "Componha uma curta estória de ninar sobre um garoto chamado Lucas e seu cavalo Repouso."}
+         "content": "Escreva uma estoria curta com um garoto chamado Lucas que tem um cachorro Totó. Sobre brincar na areia da praia."}
     ]
 )
 

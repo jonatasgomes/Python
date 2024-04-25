@@ -4,7 +4,7 @@ from alpaca.data.requests import StockBarsRequest
 import datetime as dt
 import env
 
-client = StockHistoricalDataClient(api_key=env.API_KEY, secret_key=env.API_SECRET)
+client = StockHistoricalDataClient(api_key=env.API_KEY, secret_key=env.API_SECRET, url_override=None)
 request_params = StockBarsRequest(
     symbol_or_symbols='ARM',
     timeframe=TimeFrame.Hour,
