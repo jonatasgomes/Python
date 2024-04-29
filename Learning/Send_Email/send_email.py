@@ -14,3 +14,5 @@ server = smtplib.SMTP_SSL(env.host, env.port)  # SMTP server address and port
 server.login(env.username, env.password)  # Your email account and password
 server.sendmail(sender, recipients)
 server.quit()
+
+#https://mailtrap.io/blog/python-send-email-gmail/#:~:text=To%20send%20an%20email%20with%20Python%20via%20Gmail%20SMTP%2C%20you,Transfer%20Protocol%20(SMTP)%20server.
