@@ -5,6 +5,7 @@ import datetime as dt
 import numpy as np
 import env
 
+# https://www.youtube.com/watch?v=txIbRqQVKKI
 client = StockHistoricalDataClient(api_key=env.API_KEY, secret_key=env.API_SECRET)
 request_params = StockBarsRequest(
     symbol_or_symbols='META',
