@@ -7,4 +7,8 @@ tasty.login(
     password=env.PWD
 )
 tasty.api.post('/sessions/validate')
+resp = tasty.api.get(
+    '/api-quote-tokens'
+)
+print(resp)
 tasty.logout()

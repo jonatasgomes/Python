@@ -1,11 +1,12 @@
+import datetime
+
+
 class Test:
-    value = 189
+    my_time = datetime.time.min
+
     def __init__(self):
-        value = 'abc'
-    def get_value(self):
-        return self.value
+        self.my_time = datetime.datetime.now()
+
 
 test = Test()
-test.value = 190
-Test.value = 191
-print(test.get_value(), Test.value)
+print(Test.my_time, test.my_time)

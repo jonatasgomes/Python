@@ -1,0 +1,8 @@
+/equity/usa/minute/spy/20140107_quote.zip
+/equity/usa/minute/spy/20140107_trade.zip
+/equity/usa/minute/spy/20140108_quote.zip
+/equity/usa/minute/spy/20140108_trade.zip
+/equity/usa/minute/spy/20140109_quote.zip
+/equity/usa/minute/spy/20140110_quote.zip
+/equity/usa/minute/spy/20140109_trade.zip
+/equity/usa/minute/spy/20140110_trade.zip
