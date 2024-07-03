@@ -14,7 +14,6 @@ df_books = df_top100_books[df_top100_books["book price"].between(*price_range)]
 bar = px.bar(df_books["year of publication"].value_counts().sort_index(), title="Number of Books Published by Year")
 hist = px.histogram(df_books["book price"], title="Distribution of Book Prices")
 
-df_books
 col1, col2 = st.columns(2)
 col1.plotly_chart(bar)
 col2.plotly_chart(hist)
