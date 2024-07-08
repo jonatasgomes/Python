@@ -32,16 +32,20 @@ def is_move_valid():
 
 def is_game_finished():
     global winner
-    if (positions['1,1'] == positions['1,2'] == positions['1,3'] != ' ') or \
-            (positions['2,1'] == positions['2,2'] == positions['2,3'] != ' ') or \
-            (positions['3,1'] == positions['3,2'] == positions['3,3'] != ' ') or \
-            (positions['1,1'] == positions['2,1'] == positions['3,1'] != ' ') or \
-            (positions['1,2'] == positions['2,2'] == positions['3,2'] != ' ') or \
-            (positions['1,3'] == positions['2,3'] == positions['3,3'] != ' ') or \
-            (positions['1,1'] == positions['2,2'] == positions['3,3'] != ' ') or \
-            (positions['1,3'] == positions['2,2'] == positions['3,1'] != ' '):
-        winner = turn
-        return True
+    rows = [
+        ['1,1', '1,2', '1,3'],
+        ['2,1', '2,2', '2,3'],
+        ['3,1', '3,2', '3,3'],
+        ['1,1', '2,1', '3,1'],
+        ['1,2', '2,2', '3,2'],
+        ['1,3', '2,3', '3,3'],
+        ['1,1', '2,2', '3,3'],
+        ['1,3', '2,2', '3,1']
+    ]
+    for row in rows:
+        if positions[row[0]] == positions[row[1]] == positions[row[2]] != ' ':
+            winner = turn
+            return True
     if ' ' not in positions.values():
         winner = 'd'
         return True
