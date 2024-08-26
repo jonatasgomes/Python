@@ -21,7 +21,6 @@ file_streams = [open(path, "rb") for path in file_paths]
 file_batch = client.beta.vector_stores.file_batches.upload_and_poll(
     vector_store_id=vector_store.id, files=file_streams
 )
-print(file_batch.status)
 print(file_batch.file_counts)
 
 assistant = client.beta.assistants.update(
@@ -36,7 +35,6 @@ thread = client.beta.threads.create(
         }
     ]
 )
-print(thread.tool_resources.file_search)
 
 run = client.beta.threads.runs.create_and_poll(
     thread_id=thread.id, assistant_id=assistant.id
