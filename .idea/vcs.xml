@@ -2,5 +2,6 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Learning/Stock_Market/IBKR/HackingTheMarketings/interactive-brokers-web-api" vcs="Git" />
   </component>
 </project>
