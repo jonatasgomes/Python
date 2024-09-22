@@ -1,8 +1,8 @@
-import requests, time, os
+import requests  # , time, os
 from pprint import pprint
-
 # disable SSL warnings until you install a certificate
-from requests.packages.urllib3.exceptions import InsecureRequestWarning # type: ignore
+from requests.packages.urllib3.exceptions import InsecureRequestWarning  # type: ignore
+
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 BASE_API_URL = "https://localhost:5055/v1/api"
@@ -20,7 +20,7 @@ account_id = response[0]['id']
 # r = session.get(f"{BASE_API_URL}/iserver/account/orders")
 # pprint(r.json())
 
-# Get information about the google contract
+# Get information about the Google contract
 # contract_id = 208813720
 
 # data = {
