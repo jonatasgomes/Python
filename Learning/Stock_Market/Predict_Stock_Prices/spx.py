@@ -30,7 +30,7 @@ companies = {
 # Define the time range for the last 24 hours
 end = datetime.now()
 start = end - timedelta(hours=1)
-
+interval = '2m'
 
 # Function to calculate percentage change (trend)
 def calculate_trend(_data):
@@ -44,9 +44,8 @@ def calculate_trend(_data):
 # Collect data and calculate individual trends
 trends = []
 for company, weight in companies.items():
-    # Collect 24-hour data including after-market
-    data = yf.download(company, start=start, end=end, interval='2m', prepost=True)
-    # print(data.tail(2))
+    # Collect data including after-market
+    data = yf.download(company, start=start, end=end, interval=interval, prepost=True)
 
     # Calculate individual trend
     trend = calculate_trend(data)
@@ -64,7 +63,7 @@ print(tabulate([row], headers=headers, tablefmt="simple"))
 
 # Tree map chart
 trends = [(float(trend), weight) for trend, weight in trends]
-colors = ['green' if trend[0] > 0 else 'red' if trend[0] < -0.1 else 'gray' for trend in trends]
+colors = ['green' if trend[0] > 0.05 else 'red' if trend[0] < -0.05 else 'gray' for trend in trends]
 sizes = list(companies.values())
 labels = [f"{name}\n{trend[0]:.2f}%" for name, trend in zip(companies.keys(), trends)]
 plt.figure(figsize=(12, 8))
