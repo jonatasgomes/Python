@@ -1,4 +1,5 @@
 import yfinance as yf
+import pandas as pd
 from datetime import datetime, timedelta
 from tabulate import tabulate
 import matplotlib.pyplot as plt
@@ -28,23 +29,24 @@ companies = {
 
 # Define the time range for the last 24 hours
 end = datetime.now()
-start = end - timedelta(minutes=20)
+start = end - timedelta(hours=1)
 
 
 # Function to calculate percentage change (trend)
 def calculate_trend(_data):
-    if _data.empty or len(_data) < 2:
+    _df = pd.DataFrame(_data)
+    if _df.empty or len(_df) < 2:
         return 0
-    open_price = _data['Open'].iloc[0]
-    close_price = _data['Close'].iloc[-1]
-    return ((close_price - open_price) / open_price) * 100
-
+    _first_row = _df['Open'].iloc[0]
+    _last_row = _df['Adj Close'].iloc[-1]
+    return round(((_last_row - _first_row) / _first_row) * 100, 2)
 
 # Collect data and calculate individual trends
 trends = []
 for company, weight in companies.items():
     # Collect 24-hour data including after-market
-    data = yf.download(company, start=start, end=end, interval='5m', prepost=True)
+    data = yf.download(company, start=start, end=end, interval='2m', prepost=True)
+    # print(data.tail(2))
 
     # Calculate individual trend
     trend = calculate_trend(data)
