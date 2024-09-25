@@ -63,7 +63,15 @@ print(tabulate([row], headers=headers, tablefmt="simple"))
 
 # Tree map chart
 trends = [(float(trend), weight) for trend, weight in trends]
-colors = ['green' if trend[0] > 0.05 else 'red' if trend[0] < -0.05 else 'gray' for trend in trends]
+colors = []
+for trend in trends:
+    if trend[0] > 0:
+        r, g, b = 0, min(int(255 * trend[0]), 255), 0  # gradient of green
+    elif trend[0] < 0:
+        r, g, b = min(int(-255 * trend[0]), 255), 0, 0  # gradient of red
+    else:
+        r, g, b = min(int(128 * (1 - abs(trend[0]) / 0.05)), 255), min(int(128 * (1 - abs(trend[0]) / 0.05)), 255), min(int(128 * (1 - abs(trend[0]) / 0.05)), 255)  # gradient of gray
+    colors.append(f"#{r:02x}{g:02x}{b:02x}")
 sizes = list(companies.values())
 labels = [f"{name}\n{trend[0]:.2f}%" for name, trend in zip(companies.keys(), trends)]
 plt.figure(figsize=(12, 8))
