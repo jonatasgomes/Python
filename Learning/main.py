@@ -1,8 +1,7 @@
-def _fib(n):
-    fib = [0, 1] + [0] * (n - 1)
-    for i in range(2, n + 1):
-        fib[i] = fib[i - 1] + fib[i - 2]
-    return fib[n]
+with open("exemplo.txt", "w") as arquivo:
+    arquivo.write("Olá, Mundo!\n")
+    arquivo.write("Python é incrível!\n")
 
-
-print(_fib(300))
+with open("exemplo.txt", "r") as arquivo:
+    conteudo = arquivo.read()
+    print(conteudo)
