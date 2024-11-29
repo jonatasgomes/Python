@@ -4,6 +4,11 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestRegressor
 from data_generator import generate_data
 
+@st.cache_resource
+def load_model():
+    _model = RandomForestRegressor()
+    return _model
+
 st.set_page_config(
     page_title="Modelagem Preditiva",
     layout="wide"
@@ -70,7 +75,7 @@ else:
 
 st.header("3. Treinamento do Modelo de Machine Learning")
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
-model = RandomForestRegressor()
+model = load_model()
 model.fit(x_train, y_train)
 score = model.score(x_test, y_test)
 st.write(f"**Acurácia do modelo (R² no conjunto de teste):**", round(score, 2))
