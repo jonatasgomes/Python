@@ -1,0 +1,17 @@
+{
+  "person1": {
+    "name": "Matheus",
+    "age": 23,
+    "email": "m@b.com"
+  },
+  "person2": {
+    "name": "Gabriela",
+    "age": 22,
+    "email": "g@b.com"
+  },
+  "person3": {
+    "name": "Lucas",
+    "age": 21,
+    "email": "l@b.com"
+  }
+}
