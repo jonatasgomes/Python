@@ -5,7 +5,7 @@ import os
 import datetime
 import yfinance as yf
 
-start_date = '2023-01-01'
+start_date = '2024-01-01'
 end_date = datetime.datetime.today().strftime('%Y-%m-%d')
 
 # Download historical data for SPX

@@ -46,13 +46,13 @@ def predict_new_data(spx_previous_close, spx_open, spx_close, dxy_open, vix_open
     return prediction
 
 # Example usage
-spx_previous_close = 5872.17
-spx_open = 5912.71
+spx_previous_close = 5867.07
+spx_open = 5842
 spx_close = spx_open - 30
-dxy_open = 108.103
-vix_open = 21.61
-es_future_open = 5949.50
-tnx_open = 4.512
+dxy_open = 108.481
+vix_open = 24.14
+es_future_open = 5944.50
+tnx_open = 4.554
 
 # spx_previous_close, spx_open, spx_close, dxy_open, vix_open, es_future_open, tnx_open
 predicted_high_low = predict_new_data(spx_previous_close, spx_open, spx_close, dxy_open, vix_open, es_future_open, tnx_open)
