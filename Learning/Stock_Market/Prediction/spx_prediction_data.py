@@ -1,6 +1,7 @@
 import yfinance as yf
 import pandas as pd
 from datetime import date
+import os
 
 # Define the ticker symbols
 tickers = {
@@ -26,7 +27,8 @@ for name, ticker in tickers.items():
 data.dropna(inplace=True)
 
 # Display the first few rows
-print(data.head())
+print(data.tail())
 
-# Optionally, save the data to a CSV file for future use
-data.to_csv("spx_prediction_data.csv")
+# Save the data to a CSV file for future use
+path = os.path.join(os.path.dirname(__file__), "spx_prediction_data.csv")
+data.to_csv(path)

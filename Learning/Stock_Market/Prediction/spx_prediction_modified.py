@@ -4,9 +4,11 @@ import xgboost as xgb
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 import matplotlib.pyplot as plt
+import os
 
 # Load your historical data
-data = pd.read_csv("spx_prediction_data.csv")  # Replace with your file path
+path = os.path.join(os.path.dirname(__file__), "spx_prediction_data.csv")
+data = pd.read_csv(path)  # Replace with your file path
 
 # Drop the Date column if present
 if 'Date' in data.columns:
