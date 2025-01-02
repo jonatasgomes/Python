@@ -4,9 +4,11 @@ import xgboost as xgb
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
 import matplotlib.pyplot as plt
+import os
 
 # Load your historical data
-data = pd.read_csv("spx_prediction_data.csv")  # Replace with your file path
+path = os.path.join(os.path.dirname(__file__), "spx_prediction_data.csv")
+data = pd.read_csv(path)  # Replace with your file path
 
 # Drop the Date column if present
 if 'Date' in data.columns:
@@ -50,6 +52,18 @@ y_pred = model.predict(X_test)
 mse = mean_squared_error(y_test, y_pred)
 rmse = np.sqrt(mse)
 print(f"Root Mean Squared Error: {rmse}")
+
+# Predict the SPX for tomorrow based on the latest available data
+latest_data = data.iloc[-1:].drop(columns=['SPX'])  # Prepare the latest data
+predicted_spx_tmw = model.predict(latest_data)[0]
+
+# Define the prediction range based on RMSE
+lower_bound = predicted_spx_tmw - rmse
+upper_bound = predicted_spx_tmw + rmse
+
+# Print the predicted SPX range for the next day
+print(f"Predicted SPX for tomorrow: {predicted_spx_tmw:.2f}")
+print(f"Predicted SPX range for tomorrow: [{lower_bound:.2f}, {upper_bound:.2f}]")
 
 plt.plot(y_test.values, label="Actual SPX")
 plt.plot(y_pred, label="Predicted SPX")
