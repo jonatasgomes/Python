@@ -60,8 +60,8 @@ def fetch_spx_data(start_date, end_date):
     return spx_processed
 
 # Define date range
-start_date = (datetime.now() - timedelta(days=59)).strftime('%Y-%m-%d')
-end_date = datetime.now().strftime('%Y-%m-%d')
+start_date = (datetime.now() - timedelta(days=3)).strftime('%Y-%m-%d')
+end_date = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
 
 # List of stocks to process
 stocks = ['AAPL', 'MSFT', 'NVDA', 'AMZN', 'META', 'GOOGL', 'BRK-B', 'GOOG', 'LLY', 'AVGO', 'JPM', 'TSLA', 'UNH', 'XOM', 'V', 'PG', 'COST', 'JNJ', 'ES=F']
@@ -88,7 +88,7 @@ final_data = pd.concat([final_data, spx_data], axis=1)
 final_data.index.name = 'Date'
 
 # Save to CSV
-output_file = os.path.join(os.path.dirname(__file__), 'spx_training_data.csv')
+output_file = os.path.join(os.path.dirname(__file__), 'buffer_data.csv')
 print(f"Saving data to {output_file}...")
 final_data.to_csv(output_file)
 print("Done!")
