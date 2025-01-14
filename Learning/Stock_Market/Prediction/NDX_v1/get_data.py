@@ -1,6 +1,4 @@
 from datetime import datetime, timedelta
-import oracledb
-import Learning.Stock_Market.Prediction.NDX_v1.Database.env as env
 
 yesterday = (datetime.now() - timedelta(1)).strftime('%Y-%m-%d')
 today = datetime.now().strftime('%Y-%m-%d')
@@ -35,23 +33,7 @@ ndx_stocks = {
 }
 
 try:
-    connection = oracledb.connect(user=env.USER, password=env.PASSWORD, dsn=env.DSN)
-    cursor = connection.cursor()
-    for stock, weight in ndx_stocks.items():
-        insert_query = """
-            INSERT INTO st1_stocks (id, ticker, exchange)
-            VALUES (st1_main_seq.nextval, :ticker, 'NASDAQ')
-            RETURNING id INTO :stock_id
-        """
-        stock_id = cursor.var(oracledb.NUMBER)
-        cursor.execute(insert_query, {'ticker': stock, 'stock_id': stock_id})
-        insert_query = """
-            INSERT INTO st1_index_stocks (stock_id, index_id, weight)
-            VALUES (:stock_id, 1, :weight)
-        """
-        cursor.execute(insert_query, {'stock_id': stock_id.getvalue()[0], 'weight': weight})
-    connection.commit()
-    cursor.close()
-    print("Data inserted successfully")
+    conn = None
 finally:
-    connection.close()
+    if conn is not None:
+        conn.close()

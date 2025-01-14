@@ -1,6 +1,6 @@
 from datetime import datetime, timedelta
 import oracledb
-import Learning.Stock_Market.Prediction.NDX_v1.Database.env as env
+import env
 
 yesterday = (datetime.now() - timedelta(1)).strftime('%Y-%m-%d')
 today = datetime.now().strftime('%Y-%m-%d')
