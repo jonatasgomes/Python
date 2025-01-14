@@ -61,7 +61,7 @@ def fetch_spx_data(start_date, end_date):
 
 # Define date range
 start_date = (datetime.now() - timedelta(days=3)).strftime('%Y-%m-%d')
-end_date = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
+end_date = (datetime.now() - timedelta(days=-1)).strftime('%Y-%m-%d')
 
 # List of stocks to process
 stocks = ['AAPL', 'MSFT', 'NVDA', 'AMZN', 'META', 'GOOGL', 'BRK-B', 'GOOG', 'LLY', 'AVGO', 'JPM', 'TSLA', 'UNH', 'XOM', 'V', 'PG', 'COST', 'JNJ', 'ES=F']
