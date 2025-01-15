@@ -24,6 +24,21 @@ create table st1_index_stocks (
   constraint st1_index_stocks_fk2 foreign key (stock_id) references st1_stocks (id)
 );
 
+drop table st1_stock_prices cascade constraints;
+
+create table st1_stock_prices (
+  stock_id number not null,
+  price_dt date not null,
+  timeframe varchar2(3) not null,
+  open number,
+  low number,
+  high number,
+  close number,
+  volume number,
+  constraint st1_stock_prices_pk primary key (stock_id, price_dt, timeframe),
+  constraint st1_stock_prices_ck1 check (timeframe in ('1m', '10m', '30m', '1h', '1d', '1wk', '1mo'))
+);
+
 begin
   insert into st1_stocks values (st1_main_seq.nextval, 'NDX', 'CBOE');
   insert into st1_stocks values (st1_main_seq.nextval, 'SPX', 'CBOE');
