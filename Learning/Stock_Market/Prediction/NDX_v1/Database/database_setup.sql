@@ -63,7 +63,7 @@ create or replace package body st1_stocks_pkg is
     l_json_response json_object_t;
     l_time_series json_object_t;
     l_dates json_key_list;
-    l_api_key varchar2(30) := 'W9L02QZ2YRHSZ2VD';
+    l_api_key varchar2(30) := '';
     l_date varchar2(10);
     l_data json_object_t;
     l_open number;
@@ -134,7 +134,7 @@ declare
   l_json_response json_object_t;
   l_time_series json_object_t;
   l_dates json_key_list;
-  l_api_key varchar2(30) := 'W9L02QZ2YRHSZ2VD';
+  l_api_key varchar2(30) := '';
   l_date varchar2(10);
   l_data json_object_t;
   l_open number;
