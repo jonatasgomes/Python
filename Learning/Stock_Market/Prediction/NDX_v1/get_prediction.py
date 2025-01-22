@@ -48,6 +48,7 @@ predict_df.reset_index(inplace=True)
 df_ndx = pd.DataFrame(predict_data_ndx)
 predict_df = pd.merge(predict_df, df_ndx, left_on="price_dt", right_on="price_dt", how="inner")
 # print(predict_df)
+# exit(0)
 
 # Prepare training data
 X_train = train_df.drop(columns=["price_dt", "spx_price_low", "spx_price_high"])

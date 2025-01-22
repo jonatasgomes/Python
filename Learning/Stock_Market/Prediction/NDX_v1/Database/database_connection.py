@@ -128,14 +128,14 @@ def get_predict_data_base():
               select p1.open
                 from st1_stock_prices p1
                 where p1.stock_id = p.stock_id
-                  and p1.price_dt = p.price_dt + 11.5/24
+                  and p1.price_dt = p.price_dt
                   and p1.timeframe = '30m'
             ) as price_1130
         from st1_stock_prices p, st1_stocks s
       where s.id <> 1
         and p.stock_id = s.id
-        and p.timeframe = '1d'
-        and p.price_dt = trunc(sysdate)
+        and p.timeframe = '30m'
+        and p.price_dt >= trunc(sysdate)
       order by 1
     """
   )
@@ -154,14 +154,14 @@ def get_predict_data_ndx():
               select p1.open
                 from st1_stock_prices p1
                 where p1.stock_id = p.stock_id
-                  and p1.price_dt = p.price_dt + 11.5/24
+                  and p1.price_dt = p.price_dt
                   and p1.timeframe = '30m'
             ) as spx_price_1130
         from st1_stock_prices p, st1_stocks s
       where s.id = 1
         and p.stock_id = s.id
-        and p.timeframe = '1d'
-        and p.price_dt = trunc(sysdate)
+        and p.timeframe = '30m'
+        and p.price_dt >= trunc(sysdate)
       order by 1
     """
   )
