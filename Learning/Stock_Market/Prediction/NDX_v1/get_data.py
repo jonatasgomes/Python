@@ -4,14 +4,14 @@ import Database.database_connection as db
 import logging
 
 db.connect_to_db()
-initial = (datetime.now() - timedelta(0)).strftime('%Y-%m-%d')
-final = (datetime.now() + timedelta(1)).strftime('%Y-%m-%d')
+initial = (datetime.now() - timedelta(1)).strftime('%Y-%m-%d')
+final = (datetime.now() + timedelta(0)).strftime('%Y-%m-%d')
 ndx_stocks = db.get_ndx_stocks()
 ndx_stocks.append({'ticker': '^NDX', 'id': 1, 'weight': 100})
 
 initial_date = input(f"Enter the initial date [{initial}]: ") or initial
 final_date = input(f"Enter the final date [{final}]: ") or final
-data_type = input("Enter the data type: [m]iddle day | [d]aily only | [b]oth: ") or 'b'
+data_type = input("Enter the data type: [m]iddle day | [d]aily only | [b]oth: ") or 'm'
 logging.getLogger("yfinance").setLevel(logging.ERROR)
 
 # get daily data
