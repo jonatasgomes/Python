@@ -21,4 +21,4 @@ def monitor_spy_options(expiration_date):
         print(f"Error fetching options data: {e}")
 
 # Example usage
-monitor_spy_options("2026-01-16")  # Specify the desired expiration date
+monitor_spy_options("2025-03-21")  # Specify the desired expiration date
