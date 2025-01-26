@@ -60,5 +60,5 @@ option_symbol = "SPX250321C06200000"
 max_positions = 5
 increase_pct = 4
 decrease_pct = 2
-max_months = 3
+max_months = 3 # 1, 3, 6
 price_strategy(option_symbol)
