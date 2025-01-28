@@ -60,7 +60,7 @@ def fetch_spx_data(start_date, end_date):
     return spx_processed
 
 # Define date range
-start_date = (datetime.now() - timedelta(days=1)).strftime('%Y-%m-%d')
+start_date = (datetime.now() - timedelta(days=5)).strftime('%Y-%m-%d')
 end_date = (datetime.now() - timedelta(days=-1)).strftime('%Y-%m-%d')
 
 # List of stocks to process
