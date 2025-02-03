@@ -7,7 +7,7 @@ import data.oracle_connection as db
 
 model_local = ChatOllama(model="llama3:latest", temperature=0.0)
 
-def generate_sql_query(user_question, schema_info):
+def generate_sql_query(user_question):
     prompt = f"""
     I have an Oracle database with the following schema:
     Tables:
@@ -37,13 +37,7 @@ def generate_sql_query(user_question, schema_info):
 
 @st.cache_resource
 def load_rag_data(question):
-    schema_info = {
-        "tables": [
-            {"name": "st1_stocks", "columns": ["id", "ticker"]},
-            {"name": "st1_stock_prices", "columns": ["stock_id", "price_dt", "close", "timeframe"]}
-        ]
-    }
-    sql_query = generate_sql_query(question, schema_info)
+    sql_query = generate_sql_query(question)
     raw_data = db.execute_sql_query(sql_query)
     if isinstance(raw_data, str):
         return None
@@ -58,8 +52,6 @@ def load_rag_data(question):
         retriever = vectorstore.as_retriever()
         return retriever
 
-st.title("Local Chat")
-
 rag_template = """
 Your job is to provide the price of a ticker on a specific date.
 The below provided context has the json format of the ticker, date, and price.
@@ -69,13 +61,14 @@ Context: {context}
 Customer's question: {question}
 """
 prompt = ChatPromptTemplate.from_template(rag_template)
-chain = prompt | model_local  # Simplified chain since you'll provide formatted strings
+chain = prompt | model_local
 
 # Initialize session state for messages if needed
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
 # Capture new user input
+st.title("Local Chat with RAG")
 user_input = st.chat_input("You: ")
 if user_input:
     st.session_state.messages.append({"role": "user", "content": user_input})
