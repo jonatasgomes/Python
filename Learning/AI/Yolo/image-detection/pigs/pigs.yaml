@@ -1,0 +1,5 @@
+train: /content/drive/MyDrive/FIAP/Yolo/image-detection/pigs/images/train/
+val: /content/drive/MyDrive/FIAP/Yolo/image-detection/pigs/images/val/
+
+names:
+  0: "Porco"
