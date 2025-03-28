@@ -1,4 +1,3 @@
-```markdown
 # Learning Repository
 
 This repository is a collection of various learning projects, notes, and explorations across different domains, primarily focusing on AI, data science, and financial markets.
