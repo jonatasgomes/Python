@@ -6,7 +6,7 @@ from imutils.video import VideoStream
 import time
 
 # Parameter parsing
-# python3 detect_faces_image.py --image assets/group.jpg --prototxt assets/deploy.prototxt --model assets/res10_300x300_ssd_iter_140000.caffemodel
+# python3 detect_faces_camera.py --prototxt assets/deploy.prototxt --model assets/res10_300x300_ssd_iter_140000.caffemodel
 ap = argparse.ArgumentParser()
 ap.add_argument("-p", "--prototxt", required=True, help="path to Caffe 'deploy' prototxt file")
 ap.add_argument("-m", "--model", required=True, help="path to Caffe pre-trained model")
