@@ -3,6 +3,7 @@ import cv2
 import argparse
 
 # Parameter parsing
+# python3 detect_faces_image.py --image assets/group.jpg --prototxt assets/deploy.prototxt --model assets/res10_300x300_ssd_iter_140000.caffemodel
 ap = argparse.ArgumentParser()
 ap.add_argument("-i", "--image", required=True, help="path to input image")
 ap.add_argument("-p", "--prototxt", required=True, help="path to Caffe 'deploy' prototxt file")
