@@ -30,16 +30,16 @@ def make_request(endpoint, params=None, method='GET'):
 if __name__ == "__main__":
     # make_request("/markets/quotes", {"symbols": "TSLA", "greeks": "false"})
     # make_request("/markets/options/chains", {"symbol": "TSLA", "expiration": "2025-12-19"})
-    make_request(
-        f"/accounts/{ACCOUNT_ID}/orders",
-        {
-            "class": "equity",
-            "symbol": "TSLA",
-            "side": "buy",
-            "quantity": "1",
-            "type": "market",
-            "duration": "day",
-        },
-        "POST"
-    )
+    # make_request(
+    #     f"/accounts/{ACCOUNT_ID}/orders",
+    #     {
+    #         "class": "equity",
+    #         "symbol": "TSLA",
+    #         "side": "buy",
+    #         "quantity": "1",
+    #         "type": "market",
+    #         "duration": "day",
+    #     },
+    #     "POST"
+    # )
     make_request(f"/accounts/{ACCOUNT_ID}/orders")
